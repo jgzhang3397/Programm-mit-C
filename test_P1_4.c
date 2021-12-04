@@ -1,17 +1,21 @@
 #include <stdio.h>
 #include <string.h>
-
-
 int main()
 {
-    char ch = 'w';
-    printf("%c\n", ch);
-    char* pc = &ch;
-    *pc = 'a';
-    printf("%p\n", pc);
-    printf("%c\n", *pc);
-    printf("%lu\n", sizeof(pc));
+    int a = 100;
+    
 }
+
+// int main()
+// {
+//     char ch = 'w';
+//     printf("%c\n", ch);
+//     char* pc = &ch;
+//     *pc = 'a';
+//     printf("%p\n", pc);
+//     printf("%c\n", *pc);
+//     printf("%lu\n", sizeof(pc));
+// }
 
 // int main()
 // {
