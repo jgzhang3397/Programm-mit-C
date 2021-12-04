@@ -3,7 +3,11 @@
 int main()
 {
     int a = 100;
-    
+    if(a<18)
+       printf("kind\n");
+    else if(a>=18 && a<30)
+       printf("junge Erwachsche\n");
+    else 
 }
 
 // int main()
