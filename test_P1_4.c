@@ -2,13 +2,82 @@
 #include <string.h>
 int main()
 {
-    int a = 100;
-    if(a<18)
-       printf("kind\n");
-    else if(a>=18 && a<30)
-       printf("junge Erwachsche\n");
-    else 
+    int day = 0;
+    scanf("%d", &day);
+    switch(day)
+    {
+        case 1:
+            printf("星期%d", 1);
+        break;
+        case 2:
+            printf("星期%d", 1);
+        break;
+        case 3:
+            printf("星期%d", 1);
+        break;
+        case 4:
+            printf("星期%d", 1);
+        break;
+        case 5:
+            printf("星期%d", 1);
+        break;
+    }
+    return 0;
 }
+
+// int main()
+// {
+//     int a = 1;
+//     printf("Bitte geben Sie eine Nummer:");
+//     scanf("%d", &a);
+//     if((a%2) ==1)
+//         printf("Es ist ungerade Zahl\n");
+//     else
+//         printf("Es is gerade Zahl\n");
+
+//     // int a = 1;
+//     // while (a<100)
+//     // {
+//     //     if(a%2 == 1)
+//     //        printf("%d ", a);
+//     //     a++;
+//     // }
+//     return 0;
+// }
+
+// int main()
+// {
+//     int a = 4;
+//     if(5 == a)
+//        printf("xd\n");
+//     // if(a = 5)
+//     //    printf("lol\n");
+//     return 0;
+// }
+
+// int main()
+// {
+//     int a = 1;
+//     int b = 2;
+//     if(a==2)
+//     {
+//       if(b==2)
+//          printf("xd\n");
+//     }
+//     else
+//        printf("LOL\n");
+//     // int a = 10;
+//     // if(a<18)
+//     // {
+//     //    printf("kind\n");
+//     //    printf("Keine Akohol\n");
+//     // }
+//     // else if(a>=18 && a<30)
+//     //    printf("junge Erwachsene\n");
+//     // else if (a>=30)
+//     //    printf("Erwachsene\n");
+//     return 0;
+// }
 
 // int main()
 // {
