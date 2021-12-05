@@ -2,28 +2,59 @@
 #include <string.h>
 int main()
 {
-    int day = 0;
-    scanf("%d", &day);
-    switch(day)
+    int n = 1;
+    int m = 2;
+    switch (n)
     {
+    case 1:
+        m++;
+    case 2:
+        n++;
+    case 3:
+        switch (n)
+        {
         case 1:
-            printf("星期%d", 1);
-        break;
+            n++;
         case 2:
-            printf("星期%d", 1);
+            m++;
+            n++;
+            break;
+        }
+    case 4:
+        m++;
         break;
-        case 3:
-            printf("星期%d", 1);
-        break;
-        case 4:
-            printf("星期%d", 1);
-        break;
-        case 5:
-            printf("星期%d", 1);
+    default:
         break;
     }
+    printf("m= %d, n = %d\n", m, n);
     return 0;
 }
+
+// int main()
+// {
+//     int day = 0;
+//     scanf("%d", &day);
+//     switch(day)
+//     {
+//         case 1:
+//              if(day == 1)
+//                 printf("Oh mein Gott\n");
+//         case 2:
+//         case 3:
+//         case 4:
+//         case 5:
+//             printf("Workday\n");
+//             break;
+//         case 6:
+//         case 7:
+//             printf("Feierabend\n");
+//             break;
+//         default:
+//             printf("Nop!!\n");
+//             break;
+//     }
+//     return 0;
+// }
 
 // int main()
 // {
