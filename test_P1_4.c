@@ -7,6 +7,7 @@ int main()
     {
         // if(i==5)
         //    break;
+        i++;
         if(i==5)
             continue;
         printf("i = %d ", i);
