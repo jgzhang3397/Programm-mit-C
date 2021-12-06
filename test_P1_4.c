@@ -2,19 +2,34 @@
 #include <string.h>
 int main()
 {
-    int i = 1;
-    while (i<=10)
+    int ch = 0;
+    while ((ch=getchar())!=EOF) // eof = control + z - end of file = -1
     {
-        // if(i==5)
-        //    break;
-        i++;
-        if(i==5)
-            continue;
-        printf("i = %d ", i);
-        i++;
+        putchar(ch);
     }
+    
+    // int ch = getchar();
+
+    // putchar(ch);
     return 0;
 }
+
+// int main()
+// {
+//     int i = 1;
+//     while (i<=10)
+//     {
+//         // if(i==5)
+//         //    break;
+//         i++;
+//         if(i==5)
+//             continue;//本次循环终止
+//             break;//所有循环终止
+//         printf("i = %d ", i);
+//         //i++;
+//     }
+//     return 0;
+// }
 
 // int main()
 // {
