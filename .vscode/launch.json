@@ -5,17 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "clang - Aktive Datei erstellen und debuggen",
-            "type": "cppdbg",
+            "type": "lldb",
             "request": "launch",
-            "program": "${fileDirname}//${fileBasenameNoExtension}",
+            "name": "Launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
             "args": [],
-            "stopAtEntry": false,
-            "cwd": "${fileDirname}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "lldb",
-            "preLaunchTask": "C/C++: clang Aktive Datei kompilieren"
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "C/C++: gcc Aktive Datei kompilieren"
         }
     ]
-}
+} 
