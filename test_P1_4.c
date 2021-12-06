@@ -2,33 +2,48 @@
 #include <string.h>
 int main()
 {
-    int n = 1;
-    int m = 2;
-    switch (n)
+    int i = 1;
+    while (i<=10)
     {
-    case 1:
-        m++;
-    case 2:
-        n++;
-    case 3:
-        switch (n)
-        {
-        case 1:
-            n++;
-        case 2:
-            m++;
-            n++;
-            break;
-        }
-    case 4:
-        m++;
-        break;
-    default:
-        break;
+        // if(i==5)
+        //    break;
+        if(i==5)
+            continue;
+        printf("i = %d ", i);
+        i++;
     }
-    printf("m= %d, n = %d\n", m, n);
     return 0;
 }
+
+// int main()
+// {
+//     int n = 1;
+//     int m = 2;
+//     switch (n)
+//     {
+//     case 1:
+//         m++;
+//     case 2:
+//         n++;
+//     case 3:
+//         switch (n)
+//         {
+//         case 1:
+//             n++;
+//         case 2:
+//             m++;
+//             n++;
+//             break;
+//         }
+//     case 4:
+//         m++;
+//         break;
+//     default:
+//         break;
+//     }
+//     printf("m= %d, n = %d\n", m, n);
+//     return 0;
+// }
 
 // int main()
 // {
