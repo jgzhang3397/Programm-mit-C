@@ -1,1 +1,5 @@
-demo
+Für Anfanger(in), die C lernen möchten.
+Basierend auf VScode...
+######Wie kann man die Entwicklungsumgebung für C auf den VS code aufbauen, gehen Sie zu: https://www.bilibili.com/video/BV1U741157Rd?spm_id_from=333.788.top_right_bar_window_custom_collection.content.click
+Tutorial schauen Sie auf den Bibilili bei Webseite: https://www.bilibili.com/video/BV1q54y1q79w
+Include alle Übungen und Beispiel Code davon...
