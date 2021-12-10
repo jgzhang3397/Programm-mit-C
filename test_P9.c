@@ -1,19 +1,40 @@
 #include <stdio.h>
-//求一个数组的最大值
+//打印9*9乘法表
+//1*1=1
+//2*1=1 2*2=2
+//3*1=3 3*2=6 3*3=9
+//......
 int main()
 {
     int i = 0;
-    int arr[]={-1,0,1,2,3,4,5,6,7,8,9};
-    int sz = sizeof(arr)/sizeof(arr[0]);
-    int max = arr[0];
-    for(i=0; i<sz; i++)
+    int j = 1;
+    for(i=1; i<=9; i++)
     {
-        if(arr[i]>=max)
-           max = arr[i];
+        //int j = 1;
+        for(j=1; j<=i; j++)
+        {
+            printf("%d*%d=%-2d ", i, j, i*j);//%2d - 右对其， %-2d 左对其
+        }
+        printf("\n");
     }
-    printf("Max= %d\n", max);
     return 0;
 }
+
+// //求一个数组的最大值
+// int main()
+// {
+//     int i = 0;
+//     int arr[]={-1,0,1,2,3,4,5,6,7,8,9};
+//     int sz = sizeof(arr)/sizeof(arr[0]);
+//     int max = arr[0];
+//     for(i=0; i<sz; i++)
+//     {
+//         if(arr[i]>=max)
+//            max = arr[i];
+//     }
+//     printf("Max= %d\n", max);
+//     return 0;
+// }
 
 // //求和
 // //1/1-1/2+1/3-1/4+1/5-...+1/99-1/100的和
