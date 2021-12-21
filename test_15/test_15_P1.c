@@ -1,14 +1,14 @@
 //=====Schwerpunkt=====
-//Was ist Pointer?
-//Pointer und die Sort des Pointers
-//Pointer, die nicht begrenzt nicht initialisiert etw..
+//1.Was ist Pointer?
+//2.Pointer und die Sort des Pointers
+//3. Pointer, die nicht begrenzt nicht initialisiert etw.. sollen vermeiden
 //Pointer umberechnen
 //Pointer und Arrays
 //2 stufe Pointer
 //Pointer-Arrays
 
 #include<stdio.h>
-
+//1 & 2.
 // int main()
 // {
 //     int a = 10;
@@ -39,7 +39,7 @@
 //     //double* p; p+1 --> 8
 //     return 0;
 // }
-
+//3. 
 // int main()
 // {
 //     int arr[10]={0};
@@ -52,10 +52,41 @@
     
 //     return 0;
 // }
+// int main()
+// {
+//     //int a = 0; //局部变量不初始化，默认是随机值
+//     int* p; //局部指针变量被初始化成随机值，应避免！！
+//     *p = 20;
+//     return 0;
+// }
+// int* test()
+// {
+//     int a = 10;//局部变量，test（）完结束，地址释放
+//     return &a;
+// }
+// int main()
+// {
+//     int* p = test();
+//     printf("%d\n", *p);
+//     return 0;
+// }
+
+//Wie kann man es vermeiden?
+//1. Pointer initialisieren
+// int main()
+// {
+//     int a = 10;
+//     int* pa = &a;//init
+//     int* pb = NULL;//init
+//     return 0;
+// }
+//2. Pass auf die Pointer auf den Begrenzung
 int main()
 {
-    //int a = 0; //局部变量不初始化，默认是随机值
-    int* p; //局部指针变量被初始化成随机值，应避免！！
-    *p = 20;
+    int a = 10;
+    int* pa = &a;
+    *pa = 20;
+    pa = NULL;
+    
     return 0;
 }
