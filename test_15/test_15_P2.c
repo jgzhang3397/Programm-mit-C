@@ -93,7 +93,9 @@
 int main()
 {
     int a = 10, b = 20, c = 30;
-    int* pa = &a, pb = &b, pc = &c;
+    int* pa = &a;
+    int* pb = &b;
+    int* pc = &c;
     int* arr[]={&a, &b, &c};//指针数组
     for (int i = 0; i < sizeof(arr)/sizeof(arr[0]); i++)
     {
