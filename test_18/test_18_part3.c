@@ -82,12 +82,17 @@ struct stu
     char name[20];
     int age;
 };
-
 //qsort - 库函数 - 排序
 // void qsort (void* base, 
 //             size_t num, 
 //             size_t size,
 //             int (*compar)(const void* e1,const void* e2));
+//base --> 待排数组的首元素地址
+//num --> 元素个数
+//size -> 单个元素的大小，单位字节
+//(*compar)(const void* e1,const void* e2))：--> 函数指针，比较两个元素的所用函数的地址
+//函数指针的两个参数是：待比较两个元素的地址
+
 // void* ？ ：
 //      void* 类型的指针，可以接收任意类型变量的地址
 //      void* 类型的指针，不能进行解引用操作
@@ -165,4 +170,5 @@ int main()
     test3();
     return 0;
 }
+
 
