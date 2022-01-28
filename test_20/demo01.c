@@ -1,4 +1,6 @@
 #include<stdio.h>
+#include<stddef.h>
+//==> p57
 /*
 内置类型：char, short, int, long, float, double
 复杂类型：
@@ -12,8 +14,8 @@
             2.结构的自引用
             3.结构体变量的定义和初始化
             4.结构体内存对齐
-            结构体传参
-            结构体实现位段（位段的填充&可移植性）
+            5.结构体传参
+            6.结构体实现位段（位段的填充&可移植性）
         枚举：
             枚举类型的定义
             枚举的优点
@@ -123,6 +125,24 @@ struct S
 // }
 
 //====================4.结构体内存对齐==========================
+/*
+结构体的对齐规则：
+    1.第一个成员在与结构体变量偏移量为0的地址处
+    2.其他成员变量要对齐到某个数字（对齐数）的整数倍的地址处
+        对齐数：编译器默认的一个对齐数与该成员大小的较小值
+        编译器默认的值是8
+    3.结构体总大小为最大对齐数（每个成员变量都有一个对齐数）的整数倍
+    4.如果嵌套了结构体的情况，嵌套的结构体对齐到自己的最大对齐数的整数倍处，结构体的整体大小就是所有最大对齐数
+        （含嵌套结构体的对齐数）的整数倍
+为什么需要内存对齐？
+    1.平台原因：某些硬件平台只能在某些地址处取某些特定类型的数据，否则抛出硬件异常
+    2.性能原因：数据结构（尤其是栈）应尽可能地在自然边界对齐。原因是：为了访问未对齐的内存，处理器需要做两次
+        内存访问，而对齐的内存访问仅需要一次访问
+    总的来说：结构体的内存对齐就是拿空间换时间。
+如何设计结构体时，既满足对齐，又要节省空间，如何做到：
+    1. 让占用空间小的成员尽量集中在一起
+    2. 修改默认对齐数 #pragma pack(8)//设置默认对齐数为8
+*/
 
 struct S1
 {
@@ -138,12 +158,56 @@ struct S2
     int a;
 };
 
+struct S3
+{
+    double d;
+    char c;
+    int i;
+};
+
+struct S4
+{
+    char c;
+    struct S3 s3;
+    int i;
+};
+
+#pragma pack(4)//设置默认对齐数为4
+struct S5
+{
+    char c;//1
+    //3
+    double d;//4
+    //8
+};
+#pragma pack()//取消设置的对齐数
+
+/*
+offsetof
+
+headfile: #include<stddef.h>
+size_t offsetof(structName, memberName);//计算结构体成员的偏移量
+*/
 int main()
 {
     struct S1 s1 = {0};
-    printf("%d\n", sizeof(s1));//12
+    printf("%u\n", sizeof(s1));//12
 
-    struct S2 s2 = { 0 };
-    printf("%d\n", sizeof(s2));//8
+    struct S2 s2 = {0};
+    printf("%u\n", sizeof(s2));//8
+
+    struct S3 s3 = {0};
+    printf("%u\n", sizeof(s3));//16
+
+    struct S4 s4 = {0};
+    printf("%u\n", sizeof(s4));//32
+
+    struct S5 s = {0};
+    printf("%u\n", sizeof(s));//12
+
+    printf("==============\n");
+
+    printf("%u\n", offsetof(struct S5, c));//0
+    printf("%u\n", offsetof(struct S5, d));//4
     return 0;
 }
