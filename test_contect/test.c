@@ -26,25 +26,25 @@ int main()
         scanf("%d", &input);
         switch (input)
         {
-        case 1:
+        case ADD://增加代码的可读性，使用enum
             AddContact(&con);
             break;
-        case 2:
-            /* code */
+        case DEL:
+            DelContact(&con);
             break;
-        case 3:
-            /* code */
+        case SEARCH:
+            SearchContact(&con);
             break;
-        case 4:
-            /* code */
+        case MODIFY://修改
+            ModifyContact(&con);
             break;
-        case 5:
+        case SHOW:
             ShowContact(&con);
             break;
-        case 6:
+        case SORT:
             /* code */
             break;
-        case 0:
+        case EXIT:
             printf("退出通讯录\n");
             break;
         default:

@@ -75,3 +75,92 @@ void ShowContact(const struct Contact* ps)
     
 }
 
+static int FindByName(const struct Contact* ps, char name[MAX_NAME])
+//static关键字 这个函数只能在源文件内部可以看到
+{
+    int i = 0;
+    for ( i = 0; i < ps->size; i++)
+    {
+        if (0 == strcmp(ps->data[i].name,name))//字符比较用strcmp
+        {
+            return i;//找到返回名字元素的下标
+        }
+    }
+    return -1;//找不到返回-1
+}
+
+void DelContact(struct Contact* ps)
+{
+    char name[MAX_NAME];
+    printf("请输入要删除人的名字:>");
+    scanf("%s", name);
+    //1.查找要删除的人在的位置
+    int pos = FindByName(ps, name);
+    
+    //2.删除
+    if(pos == -1)
+    {
+        printf("要删除的人不存在\n");
+    }
+    else
+    {
+        //删除数据
+        int j = 0;
+        for ( j = pos; j < ps->size-1 ; j++)
+        {
+            ps->data[j] = ps->data[j+1]; //i处的元素删除，其后面的元素向前一位覆盖
+        }
+        ps->size--;
+        printf("删除成功\n");
+    }
+}
+
+void SearchContact(const struct Contact* ps)
+{
+    char name[MAX_NAME];
+    printf("请输入要查找人的名字:>");
+    scanf("%s", name);
+    int pos = FindByName(ps, name);
+    if (pos == -1)
+    {
+        printf("要查找的人不存在\n");
+    }
+    else
+    {
+        printf("%-20s\t%-4s\t%-5s\t%-12s\t%-20s\n", "名字", "年龄", "性别", "电话", "住址");
+        printf("%-20s\t%-4d\t%-5s\t%-12s\t%-20s\n",
+                ps->data[pos].name,
+                ps->data[pos].age,
+                ps->data[pos].sex,
+                ps->data[pos].tele,
+                ps->data[pos].addr);
+    }
+    
+}
+
+void ModifyContact(struct Contact* ps)
+{
+    char name[MAX_NAME];
+    printf("请输入要修改人的名字:>");
+    scanf("%s", name);
+    int pos = FindByName(ps, name);
+    if(pos == -1)
+    {
+        printf("要修改的人不存在\n");
+    }
+    else
+    {
+        printf("请输入名字:>");
+        scanf("%s", ps->data[pos].name);
+        printf("请输入年龄:>");
+        scanf("%d", &(ps->data[pos].age));
+        printf("请输入性别:>");
+        scanf("%s", ps->data[pos].sex);
+        printf("请输入电话:>");
+        scanf("%s", ps->data[pos].tele);
+        printf("请输入地址:>");
+        scanf("%s", ps->data[pos].addr);
+    }
+    printf("修改成功\n");
+}
+

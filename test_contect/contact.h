@@ -9,6 +9,16 @@ error redefinition of 'xxx':
         #endif
     这种限制。
 */
+enum Option
+{
+    EXIT,//0
+    ADD,//1
+    DEL,//2
+    SEARCH,//3
+    MODIFY,//4
+    SHOW,//5
+    SORT//6
+};
 
 #define MAX 1000
 
@@ -33,10 +43,25 @@ struct Contact
     int size; //记录当前已有的元素个数
 };
 
-#endif 
-
+#endif
 
 //声明函数
+
+//初始化通讯录
 void InitContact(struct Contact* ps);
+
+//添加好友信息
 void AddContact(struct Contact* ps);
-void ShowContact(const struct Contact* ps);//只显示，不修改
+
+//显示好友信息
+void ShowContact(const struct Contact* ps);//只显示，不修改-- const
+
+//删除指定好友信息
+void DelContact(struct Contact* ps);
+
+//查找指定好友信息
+void SearchContact(const struct Contact* ps);
+
+//查找指定好友信息
+void ModifyContact(struct Contact* ps);
+
