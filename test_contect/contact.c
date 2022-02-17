@@ -28,8 +28,34 @@ void InitContact(struct Contact* ps)
     ps->size = 0;//设置通讯录最初0个元素
     ps->capacity = DEFAULT_SZ;//初始容量是3个
 
+    //把文件中已经存放的通讯录文件中的信息加载到通讯录中
+    LoadContact(ps);
+
     //memset(ps->data, 0, sizeof(ps->data));
    
+}
+
+void LoadContact(Contact* ps)
+{
+    PeopleInfo temp = {0};
+    FILE* pfRead = fopen("contact.txt", "rb");
+    if(pfRead == NULL)
+    {
+        printf("LoadContact:: %s\n", strerror(errno));
+    }
+    else
+    {
+        //读取文件，存放到通讯录中
+        while (fread(&temp, sizeof(PeopleInfo), 1, pfRead))
+        {
+            CheckCapacity(ps);
+            ps->data[ps->size] = temp;
+            ps->size++;
+        }
+        //fread(&temp, sizeof(PeopleInfo), 1, pfRead);//返回值是实际读取元素的个数
+        fclose(pfRead);
+        pfRead = NULL;
+    }
 }
 
 void CheckCapacity(struct Contact* ps)
@@ -201,3 +227,23 @@ void DestroyContact(Contact* ps)
     ps->data = NULL;
 }
 
+void SaveContact(Contact* ps)
+{
+    FILE* pfWrite = fopen("contact.txt", "wb");
+    if(pfWrite == NULL)
+    {
+        printf("SaveContact:: %s\n", strerror(errno));
+        return;
+    }
+    else
+    {
+        //写通讯录中的数据到文件中
+        for (int i = 0; i < ps->size; i++)
+        {
+            fwrite(&(ps->data[i]), sizeof(PeopleInfo), 1, pfWrite);
+        }
+        
+        fclose(pfWrite);
+        pfWrite = NULL;
+    }
+}

@@ -2,6 +2,7 @@
 #define _TEST
 #include<string.h>
 #include<stdlib.h>
+#include<errno.h>
 /*
 error redefinition of 'xxx':
     1. .H文件没有进行
@@ -19,7 +20,8 @@ enum Option
     SEARCH,//3
     MODIFY,//4
     SHOW,//5
-    SORT//6
+    SORT,//6
+    SAVE//7
 };
 
 //#define MAX 1000
@@ -70,4 +72,12 @@ void ModifyContact(struct Contact* ps);
 
 //
 void DestroyContact(Contact* ps);
+
+//保存到文件
+void SaveContact(Contact* ps);
+
+//加载文件中的信息到通讯录
+void LoadContact(Contact* ps);
+
+void CheckCapacity(Contact* ps);
 
