@@ -101,12 +101,51 @@ void Test05()
     }
     
 }
+
+/*
+Test06()
+    输入描述：
+        随机输入的浮点数
+    输出描述：
+        四舍五入之后的整数
+    
+    示例：
+        输入： 14.99
+        输出： 15
+*/
+void Test06()
+{
+    double d = 0.00;
+    scanf("%lf", &d);
+
+    int a = (int)d;//强转
+
+    //正
+    if (d >=0)
+    {
+        if(d + 0.5 >= a + 1.0)
+            printf("%d\n", a+1);
+        else
+            printf("%d\n", a);
+    }
+
+    //负
+    if(d < 0)
+    {
+        if(d - 0.5 <= a - 1.0)
+            printf("%d\n", a-1);
+        else
+            printf("%d\n", a);
+    }
+}
+
 int main()
 {
     //Test01();
     //Test02();
     //Test03();
     //Test04();
-    Test05();
+    //Test05();
+    Test06();
     return 0;
 }

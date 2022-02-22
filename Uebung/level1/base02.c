@@ -231,6 +231,106 @@ void Test08()
     printf("%.2f %.2f", sum, avg);
 }
 
+/*
+Test09()
+    输入描述：
+        输入一个char类型字符
+    输出描述：
+        输出一个用这个字符填充的对角线长5个字符，倾斜放置的菱形
+    输入： 
+        #
+    输出：
+          #
+         ###
+        #####
+         ###
+          #
+*/
+void Test09()
+{
+    char c = 0;
+    scanf("%c", &c);
+    int i,j;
+    int n = 3;
+    
+    //打印上三角 三行
+    for (i = 1; i <=n; i++)
+    {
+        //打印空格
+        for(j = 0; j< n - i; j++)
+        {
+            printf(" ");
+        }
+        //打印符号
+        for(j = 0; j<2*i-1; j++)
+        {
+            printf("%c", c);
+        }
+        printf("\n");
+    }
+
+    //打印下三角 两行
+    for ( i = 1; i < n; i++)
+    {
+        //打印空格
+        for(j = 0; j< i; j++)
+        {
+            printf(" ");
+        }
+        //打印符号
+        for(j = 0; j<2*(n-i)-1; j++)
+        {
+            printf("%c", c);
+        }
+        printf("\n");
+    }  
+}
+
+/*
+Test10()
+    描述
+    实现字母的大小写转换。多组输入输出。
+        输入描述：
+            多组输入，每一行输入大写字母。
+        输出描述：
+            针对每组输入输出对应的小写字母。
+    
+    输入： A
+          B
+    
+    输出： a
+          b
+
+    In ASCII:
+    A->Z ==> 65 -> 90
+    a->z ==> 97 -> 122
+    相差32
+
+    int getchar ( void );
+        Returns the next character from the standard input (stdin).
+    int putchar ( int character );
+        Writes a character to the standard output (stdout).
+    */
+void Test10()
+{
+    int ch = 0;
+    while ((ch = getchar()) != EOF)
+    {
+        getchar();//防止回车被读取，可在其前面多读取一次消耗回车
+        if(65<=ch && ch <= 90)
+        {
+            putchar(ch + 32);//输入大写，输出小写
+            printf("\n");
+        }
+        else
+        {
+            putchar(ch - 32);//输入小写，输出大写
+            printf("\n");
+        }
+    }
+    
+}
+
 int main()
 {
     //Test01();
@@ -240,6 +340,8 @@ int main()
     //Test05();
     //Test06();
     //Test07();
-    Test08();
+    //Test08();
+    //Test09();
+    Test10();
     return 0;
 }
