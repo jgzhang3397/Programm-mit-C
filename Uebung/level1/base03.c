@@ -152,12 +152,190 @@ void Test05()
     ret = 2 << (n-1);
     printf("%d\n", ret);
 }
+
+/*
+Test06():
+    描述
+    输入n科成绩（浮点数表示），统计其中的最高分，最低分以及平均分。
+
+    数据范围：1≤n≤100  ， 成绩使用百分制且不可能出现负数
+
+    输入描述：
+    两行，
+
+    第1行，正整数n（1≤n≤100）
+
+    第2行，n科成绩（范围0.0~100.0），用空格分隔。
+
+    输出描述：
+    输出一行，三个浮点数，分别表示，最高分，最低分以及平均分（小数点后保留2位），用空格分隔。
+
+    示例1
+        输入：
+            5
+            99.5 100.0 22.0 60.0 88.5
+        输出：
+            100.00 22.00 74.00
+*/
+void Test06()
+{
+    int n = 1;
+
+    float max = 0;
+    float min = 100;
+
+    float sum = 0;
+    float avg = 0;
+
+    scanf("%d", &n);
+    assert(1<= n && n<= 100);
+
+    float score[100] = {0};
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%f", &score[i]);
+        if(score[i]>= 0.00 && score[i]<= 100.00)
+        {
+            sum += score[i];
+
+            if(score[i]>max)
+                max = score[i];
+
+            if(score[i]<min)
+                min = score[i];
+        }
+        else
+            return;
+        
+    }
+
+    avg = sum/n;
+
+    printf("%.2f %.2f %.2f\n", max, min, avg);  
+    
+}
+
+/*
+Test07():
+    描述
+    根据给出的三角形3条边a, b, c，计算三角形的周长和面积。
+
+    数据范围： 0<a,b,c≤100000 
+
+    输入描述：
+    一行，三角形3条边（能构成三角形），中间用一个空格隔开。
+
+    输出描述：
+    一行，三角形周长和面积（保留两位小数），中间用一个空格隔开，输出具体格式详见输出样例。
+
+    示例1
+        输入：
+        3 3 3
+
+        输出：
+        circumference=9.00 area=3.90
+复制
+*/
+#include<math.h>
+void Test07()
+{
+    //define input variables 
+    float a, b, c, s;
+    scanf("%f %f %f", &a, &b, &c);
+
+    //判断能否构成三角形
+    if(a<= 0 || b<= 0 || c<= 0)
+    {
+        printf("输入错误,请重新输入：>");
+        return;
+    }
+    else
+    {
+        if( ((a+b)>c && fabs(a-b)<c) || ((b+c)>a && fabs(b-c)<a) || ((a+c)>b && fabs(a-c)<b))
+        {
+            float p = (a+b+c)/2;
+            s = sqrt(p*(p-a)*(p-b)*(p-c));
+            printf("circumference=%.2f area=%.2f\n", a + b + c, s);
+        }
+        else
+        {
+            printf("输入不构成三角形,请重新输入：>");
+            return;
+        }
+    }
+
+}
+
+/*
+Test09():
+        描述
+        输入一个浮点数f, 表示华氏温度, 输出对应的摄氏温度c , c=5/9*(f-32)
+
+        输入描述：
+        输入一个浮点数f(1 <= f<= 100000)
+
+        输出描述：
+        输出浮点数,保留3位小数
+            示例1
+                输入：
+                100
+
+                输出：
+                37.778
+*/
+void Test09()
+{
+    double f, c;
+    scanf("%lf", &f);//double ==> lf, float ==> f
+    if(1<= f && f<= 100000)
+    {
+        c = 5.0/9.0*(f-32);//c=5/9*(f-32), 5/9 = 0
+        printf("%.3f\n", c);
+    }
+    else
+    {
+        return;
+    }
+
+}
+
+/*
+Test10()
+    描述
+    牛牛口渴了，要喝10升水才能解渴，但现在只有一个深 h 厘米，底面半径是 r 厘米的水杯，牛牛最少要喝多少杯水才能解渴。
+
+    水杯的体积公式是 pi * h * r^2  
+    其中 pi 取 3.14 ，h和r是整数。
+
+    输入描述：
+    输入杯子的高度 h，底面半径 r。
+
+    输出描述：
+    输出牛牛最少要喝多少杯水
+*/
+#define PI 3.14
+void Test10()
+{
+    int h, r;
+    scanf("%d %d", &h, &r);
+
+    int v = PI * h * pow(r, 2);
+
+    int sum = 10000/v + 1;
+    printf("%d", sum);
+}
+
 int main()
 {
     //Test01();
     //Test02();
     //Test03();
     //Test04();
-    Test05();
+    //Test05();
+    //Test06();
+    //Test07();
+    //Test08();
+    //Test09();
+    Test10();
     return 0;
 }
