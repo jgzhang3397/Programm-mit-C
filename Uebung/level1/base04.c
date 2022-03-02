@@ -220,12 +220,156 @@ void Test05()
     
 }
 
+/*
+Test06():
+    气象意义上，通常以3～5月为春季(spring)，
+    6～8月为夏季(summer)，9～11月为秋季(autumn)，
+    12月～来年2月为冬季(winter)。请根据输入的年份以及月份，输出对应的季节。
+
+    输入描述：
+        输入的数据格式是固定的YYYYMM的形式，即：年份占4个数位，月份占2个数位。
+    输出描述：
+        输出月份对应的季节（用英文单词表示，全部用小写字母）。
+    
+    示例1
+        输入：
+            201901
+        输出：
+            winter
+*/
+void Test06()
+{
+    int x;
+    
+    scanf("%d", &x);
+    int t = x%100;
+    if(3 <= t && t <= 5)
+        printf("spring\n");
+    else if(6<= t && t <= 8)
+        printf("summer\n");
+    else if(9<= t && t <= 11)
+        printf("autumn\n");
+    else if(12==t || (t>=0 && t<3))
+        printf("winter\n");
+    else
+        printf("enter error\n");
+
+}
+
+/*
+Test07():
+    描述
+    小乐乐获得4个最大数，请帮他编程找到最大的数。
+
+    输入描述：
+        一行，4个整数，用空格分开。
+    输出描述：
+        一行，一个整数，为输入的4个整数中最大的整数。
+    
+    示例1
+        输入：
+            5 8 2 5
+        输出：
+            8
+*/
+void demo01_t7()
+{
+    int a, b, c, d;
+    scanf("%d %d %d %d", &a, &b, &c, &d);
+    
+    int x = a>b?a:b;
+    int y = c>d?c:d;
+
+    int max = x>y?x:y;
+     
+    printf("%d\n", max);
+}
+
+void demo02_t7()
+{
+    int n, max = 0;
+    for (int i = 0; i < 4; i++)
+    {
+        scanf("%d", &n);
+        if(n>max)
+            max = n;
+    }
+    printf("%d\n", max);
+    
+}
+
+void Test07()
+{
+    //demo01_t7();
+    demo02_t7();
+}
+
+/*
+Test08():
+    描述
+    牛牛从键盘输入一个整数，请你判断这个整数能被 2 3 7 中哪几个数整除，并按升序输出。
+    如果不能被 2 3 7 任意一个数整除则输出 n。
+
+    输入描述：
+        输出一个整数
+    输出描述：
+        输出能被 2 3 7 哪几个数整除，并按升序输出。
+*/
+void demo01_t8()
+{
+    int n;
+    scanf("%d", &n);
+    if(n%2 == 0 && n %3 != 0 && n%7 != 0)
+        printf("2\n");
+    else if(n%2 != 0 && n %3 == 0 && n%7 != 0)
+        printf("3\n");
+    else if(n%2 != 0 && n %3 != 0 && n%7 == 0)
+        printf("7\n");
+    else if(n%(2*3)==0 && n%7 != 0)
+        printf("2 3\n");
+    else if(n%(2*7)==0 && n%3 != 0)
+        printf("2 7\n");
+    else if(n%(3*7)==0 && n%2 != 0)
+        printf("3 7\n");
+    else if(n%(2*3*7)==0)
+        printf("2 3 7\n");
+    else
+        printf("n\n");
+}
+
+void demo02_t8()
+{
+    int n;
+    scanf("%d", &n);
+    if(n%2==0)
+        printf("2 ");
+    
+    if(n%3==0)
+        printf("3 ");
+    
+    if(n%7==0)
+        printf("7\n");
+    
+    if(n%2!=0 && n%3!=0 && n%7!=0)
+        printf("n\n");
+
+}
+
+void Test08()
+{
+    //demo01_t8();
+    demo02_t8();
+}
+
 int main()
 {
     //Test01();
     //Test02();
     //Test03();
     //Test04();
-    Test05();
+    //Test05();
+    //Test06();
+    //Test07();
+    Test08();
     return 0;
 }
