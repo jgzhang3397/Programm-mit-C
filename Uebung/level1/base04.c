@@ -361,6 +361,147 @@ void Test08()
     demo02_t8();
 }
 
+/*
+Test09():
+    描述
+    牛牛正在寄快递，他了解到快递在 1kg 以内的按起步价 20 元计算，
+    超出部分按每 kg 1元计算，不足 1kg 部分按 1kg计算。如果加急的话要额外付五元，请问牛牛总共要支付多少快递费
+
+    输入描述：
+    第一行输入一个单精度浮点数 a 和一个字符 b ，a 表示牛牛要寄的快递的重量，
+    b表示牛牛是否选择加急，'y' 表示加急 ，'n' 表示不加急。
+
+    输出描述：
+    输出牛牛总共要支付的快递费用
+
+    示例1
+        输入：
+            1.5 y
+        输出：
+            26   
+
+    float a = 2.1;
+    float b = 2.9;
+    printf("%d\n", (int)a);//2
+    printf("%d\n", (int)b);//2 
+*/
+
+void Test09()
+{
+    float a;
+    char b;
+    int preis;
+    int temp;
+    scanf("%f %c", &a, &b);
+
+    if((int)((a-1)*10) % 10 !=0)//如果a大于1kg时，多出来的重量是不是整数
+        temp = (int)(a-1) + 1;
+    else //如果a大于1kg时，多出来的重量是是整数
+        temp = (int)(a-1);
+    
+    if(0<a && a<=1)
+    {
+        if(b == 'y')
+            preis = 25;
+        else
+            preis = 20;
+    }
+    else if(a>1)
+    {
+        if(b == 'y')
+            preis = 25 + temp;
+        else
+            preis = 20 + temp;
+    }
+    else
+        printf("Error\n");
+    printf("%d\n", preis);
+}
+
+/*
+Test10():
+
+    输入描述：
+    第一行输入 x ,y 表示牛牛的坐标。
+    第二行输入 x1,y1 表示金币的坐标。保证 |x1 - x| + |y1 - y| = 1 , 坐标是整数。
+
+    输出描述：
+    输出牛牛应该往哪个方向伸手。
+    例 
+    (x,y)=(0,0) (x1,y1)=(0,1) ，则牛牛向上伸手，输出 'u' 。
+    (x,y) =(0,0) (x1,y1) = (0,-1) ，则牛牛向下伸手，输出 'd'。
+    (x,y) =(0,0) (x1,y1) = (1,0) ，则牛牛向右伸手，输出 'r'。
+    (x,y) =(0,0) (x1,y1) = (-1,0) ，则牛牛向左伸手，输出 'l'。
+
+    示例1
+        输入：
+            0 0
+            0 1
+        输出：
+            u
+*/
+#include<stdlib.h>
+void Test10()
+{
+    int x,y,x1,y1;
+    scanf("%d %d %d %d", &x,&y,&x1,&y1);
+    while((abs(x1-x)+abs(y1-y)) == 1)
+    {
+        if(y1 - y == 1)
+            printf("u\n");
+        if(y1 - y == -1)
+            printf("d\n");
+        if(x1 - x == 1)
+            printf("r\n");
+        if(x1 - x == -1)
+            printf("l\n");
+
+        break;
+    }
+}
+
+/*
+scanf的高级用法
+*/
+void demo01_Test_Scanf()
+{
+    int n;
+    float f;
+    char str[23];
+    scanf("%2d", &n);//表示最多读取两位整数
+
+    scanf("%*[^\n]"); 
+    scanf("%*c");  //清空缓冲区
+
+    scanf("%5f", &f);
+
+    scanf("%*[^\n]"); 
+    scanf("%*c");  //清空缓冲区
+
+    scanf("%19s", str);
+    printf("n=%d, f=%g, str=%s\n", n, f, str);
+}
+
+void demo02_Test_Scanf()
+{
+    char a, b, c, d;
+    scanf("%c %c %c %c", &a, &b, &c, &d);
+    printf("%c %c %c %c\n", a, b, c, d);
+}
+void Test_Scanf()
+{
+    //demo01_Test_Scanf();
+
+    /*
+    %s 控制符会匹配除空白符以外的所有字符，它有两个缺点：
+
+        %s 不能读取特定的字符，比如只想读取小写字母，或者十进制数字等，%s 就无能为力；
+        %s 读取到的字符串中不能包含空白符，有些情况会比较尴尬，例如，无法将多个单词存放到一个字符串中，
+            因为单词之间就是以空格为分隔的，%s 遇到空格就读取结束了。
+    */
+    demo02_Test_Scanf();
+}
+
 int main()
 {
     //Test01();
@@ -370,6 +511,9 @@ int main()
     //Test05();
     //Test06();
     //Test07();
-    Test08();
+    //Test08();
+    //Test09();
+    //Test10();
+    Test_Scanf();
     return 0;
 }
