@@ -450,6 +450,55 @@ void Test09()
         printf("%.2lf\n", result);
     }while (1);
 }
+
+/*
+Test10()&Test11():
+    描述
+    小乐乐在课上学习了二进制八进制与十六进制后，对进制转换产生了浓厚的兴趣。因为他的幸运数字是6，所以他想知道一个数表示为六进制后的结果。请你帮助他解决这个问题。
+
+    输入描述：
+    输入一个正整数n  (1 ≤ n ≤ 109)
+
+    输出描述：
+    输出一行，为正整数n表示为六进制的结果
+
+    示例1
+        输入：
+        6
+        输出：
+        10
+*/
+
+void Test10()
+{
+    long int n;
+    long int result = 0;
+    int i = 0;
+    scanf("%ld", &n);
+    while(n)
+    {
+        result += pow(10,i) * (n%6);
+        n /= 6;
+        i ++;
+    }
+    printf("%ld\n", result);
+}
+
+void Test11()
+{
+    int n;
+    int i = 0;
+    scanf("%d", &n);
+    int result[100] = {0};
+    while (n)
+    {
+        result[i] = n%6;
+        n /= 6;
+        i ++;
+    }
+    for(int j = i-1; j>=0; j--)
+        printf("%d", result[j]);
+}
 int main()
 {
     //Test01();
@@ -460,7 +509,9 @@ int main()
     //Test06();
     //Test07();
     //Test08();
-    Test09();
+    //Test09();
+    //Test10();
+    Test11();
     return 0;
 }
 
