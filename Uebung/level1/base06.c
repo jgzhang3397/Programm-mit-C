@@ -239,6 +239,61 @@ void Test05()
     }
     
 }
+
+/*
+Test06()&Test06_s2()
+
+KiKi学习了循环，BoBo老师给他出了一系列打印图案的练习，该任务是打印用“*”组成的正斜线形图案。
+    输入描述：
+        多组输入，一个整数（2~20），表示输出的行数，也表示组成正斜线的“*”的数量。
+    输出描述：
+        针对每行输入，输出用“*”组成的正斜线。
+    示例1
+
+    输入：
+    4
+输出：
+        *
+       * 
+      *  
+     *  
+*/
+void Test06()
+{
+    int n = 0;
+    while(scanf("%d", &n)!=EOF)
+    {
+        for(int i=0; i<n; i++)
+        {
+            for(int j=1; j<(n-i); j++)
+            {
+                printf(" ");
+            }
+            printf("*\n");
+        }
+    }
+}
+
+void Test06_s2()
+{
+    int n = 0;
+    while(scanf("%d", &n)!=EOF)
+    {
+        for(int i=0; i<n; i++)
+        {
+            for(int j=0; j<n; j++)
+            {
+                //看作成坐标系
+                if(i+j==n-1){
+                    printf("*");
+                }else{
+                    printf(" ");
+                }
+            }
+            printf("\n");
+        }
+    }
+}
 int main()
 {
     //Test01();
@@ -246,6 +301,8 @@ int main()
     //Test03();
     //Test04();
     //Test04_s2();
-    Test05();
+    //Test05();
+    //Test06();
+    Test06_s2();
     return 0;
 }
