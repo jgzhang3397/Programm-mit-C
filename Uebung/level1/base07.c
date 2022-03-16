@@ -140,21 +140,17 @@ void Test03_S1()
     date = NULL;
 }
 
-void Swap(int* p , int n) //冒泡排序
+void Swap_Test03(int* p , int n) //冒泡排序
 {
-    int h = 1; //用于判断是否已经有序，如果是则跳出循环不必继续执行
-    for(int i=1; i<=n; i++)
+    //一定进行N-1轮比较
+    for(int i=0; i<=n-1; i++)
     {
-        if (0 == h)
-        {
-            break;
-        }
-        else
-        {
-            h = 0;
-        }
-         
-        for(int j=0; j<n - i; j++)
+        //用于判断是否已经有序，如果是则跳出循环不必继续执行
+        // 0 == false; 1 == true
+        int h = 1; 
+
+        ////每一轮比较前n-1-i个，即已排序好的最后i个不用比较
+        for(int j=0; j<n-1-i; j++)
         {
             int temp = 0;
             if(*(p+j) < *(p+j+1))
@@ -165,9 +161,12 @@ void Swap(int* p , int n) //冒泡排序
                 temp = *(p+j);
                 *(p+j) = *(p+j+1);
                 *(p+j+1) = temp;
-                h = 1;
+                h = 0;
             }
         }
+
+        if(h==1)
+            break;
     }
 }
 
@@ -181,7 +180,7 @@ void Test03_S2()
     {
         scanf("%d" ,p + i);
     }
-    Swap(p , n);
+    Swap_Test03(p , n);
     for(int i = 0;i < 5; i++)
     {
         printf("%d " , *(p + i) );
@@ -189,11 +188,153 @@ void Test03_S2()
     free(p); //释放堆空间
     p = NULL;
 }
+
+/*
+Test04():
+描述
+    输入两个升序排列的序列，将两个序列合并为一个有序序列并输出。
+    数据范围： 1≤n,m≤1000  ， 序列中的值满足 0≤val≤30000 
+
+输入描述：
+    输入包含三行，
+        第一行包含两个正整数n, m，用空格分隔。n表示第二行第一个升序序列中数字的个数，m表示第三行第二个升序序列中数字的个数。
+        第二行包含n个整数，用空格分隔。
+        第三行包含m个整数，用空格分隔。         
+输出描述：
+    输出为一行，输出长度为n+m的升序序列，即长度为n的升序序列和长度为m的升序序列中的元素
+    输入：
+        5 6
+        1 3 7 9 22
+        2 8 10 17 33 44
+    输出：
+        1 2 3 7 8 9 10 17 22 33 44
+*/
+void swap_Test04(int * p, int n)
+{
+    int i,j;
+    for(i=0; i<n-1; i++)
+    {
+        int flag = 1;
+        
+        for(j=0; j<n-1-i; j++)
+        {
+            int temp = 0;
+            if(*(p+j) > *(p+j+1))
+            {
+                temp = *(p+j);
+                *(p+j) = *(p+j+1);
+                *(p+j+1) = temp;
+                flag = 0;
+            }
+        }
+        
+        if(flag==1)
+            break;
+    }
+}
+
+void Test04()
+{
+    int i, n, m;
+    while(scanf("%d %d", &n, &m)!=EOF && (1<=n && n<=1000)&&(1<=m && m<=1000))
+    {
+        int * arrNM = (int *)malloc((n+m)*sizeof(int));
+        
+        for(i=0; i<n; i++)
+        {
+            scanf("%d", arrNM + i);
+        }
+        for(i=n; i<(n+m); i++)
+        {
+            scanf("%d", arrNM + i);
+        }
+        
+        swap_Test04(arrNM, (n+m));
+        
+        for(i = 0; i<(n+m); i++)
+            printf("%d ", *(arrNM+i));
+        free(arrNM);
+        arrNM = NULL;
+    }
+}
+
+/*
+Test05():
+    描述
+    输入一个整数序列，判断是否是有序序列，有序，指序列中的整数从小到大排序或者从大到小排序(相同元素也视为有序)。
+    数据范围： 3≤n≤50  序列中的值都满足 1≤val≤100 
+
+    输入描述：
+        第一行输入一个整数N(3≤N≤50)。
+        第二行输入N个整数，用空格分隔N个整数。
+    输出描述：
+    输出为一行，如果序列有序输出sorted，否则输出unsorted。
+
+    输入：
+        5
+        1 6 9 22 30
+    输出：
+        sorted
+    
+    输入：
+        5
+        3 4 7 2 10
+    输出：
+        unsorted
+*/
+
+int swap_Test05(int* p, int n)
+{
+    int i;
+    int countPlus = 0;
+    int countMinus = 0;
+    for(i=0; i<n-1; i++)
+    {
+        while(*(p+i)<=*(p+i+1))
+        {
+            countPlus++;
+            break;
+        }
+        while(*(p+i)>=*(p+i+1))
+        {
+            countMinus++;
+            break;
+        }
+    }
+    if(countPlus == (n-1) || countMinus ==(n-1))
+        return 1;
+    else
+        return 0;
+}
+
+void Test05()
+{
+    int i,n;
+    int* p = NULL;
+    while(scanf("%d", &n)!=EOF && (3<=n && n<=50))
+    {
+        p = (int *)malloc(n*sizeof(int));
+        for(i=0; i<n; i++)
+        {
+            scanf("%d", p+i);
+        }
+        int result = swap_Test05(p, n);
+        if(result == 1)
+            printf("sorted\n");
+        else
+            printf("unsorted\n");
+        
+        free(p);
+        p= NULL;
+    }
+}
 int main(void)
 {
     //Test01();
     //Test02();
     //Test03_S1();
-    Test03_S2();
+    //Test03_S2();
+    //Test04();
+    Test05();
     
 }
