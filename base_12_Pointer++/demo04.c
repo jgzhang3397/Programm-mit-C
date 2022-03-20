@@ -69,12 +69,24 @@ void test5()
 {
     struct stu s[3] = {{"zaver", 22}, {"lukas", 13}, {"anna", 8}};
     int sz = sizeof(s)/sizeof(s[0]);
+    int i;
     bubble_sort(s, sz, sizeof(s[0]), cmp_stu_by_age);
+    for(i=0; i<sz; i++)
+    {
+        printf("%d ", s[i].age);
+    }
+    printf("\n");
+
+    bubble_sort(s, sz, sizeof(s[0]), cmp_stu_by_name);
+    for(i=0; i<sz; i++)
+    {
+        printf("%s ", s[i].name);
+    }
 }
 int main()
 {
-    test4();
-    //test5();
+    //test4();
+    test5();
     return 0;
 }
 
