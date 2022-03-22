@@ -12,12 +12,12 @@ int main()
     //a[1]第二行的数组名
     printf("%lu\n", sizeof(a[0] + 1));//4\8 地址 a[0]没有单独放在sizeof中，表示首元素地址 1行第一个
     //a[0] + 1 ：1行第二个元素地址
-    printf("====\n");
-    printf("%p\n", &a[0][0]);
-    printf("%p\n", a[0] + 1);
-    printf("%p\n", a + 1);
-    printf("%p\n", &a[0] + 1);
-    printf("====\n");
+    printf("=======================\n");
+    printf("%p\n", &a[0][0]);//0x7ffeefbff1c0
+    printf("%p\n", a[0] + 1);//0x7ffeefbff1c4
+    printf("%p\n", a + 1);//0x7ffeefbff1d0
+    printf("%p\n", &a[0] + 1);//0x7ffeefbff1d0
+    printf("======================\n");
 
     printf("%lu\n", sizeof(*a[0] + 1));//4  1行第二个元素地址解引用
     printf("%lu\n", sizeof(a + 1));//4\8 a 首元素地址 ，二维数组首地址就是第一行 a就是第一行地址 a + 1 表示第二行地址
