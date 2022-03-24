@@ -156,7 +156,7 @@ char* my_strncat(char* dest, const char* src, unsigned int num)
     return ret;
 }
 
-void Test05()
+void Test04()
 {
     char arr1[30] = "hello";
     char arr2[] = "world";
@@ -171,7 +171,6 @@ int main()
     //Test01();
     //Test02();
     //Test03();
-    //Test04();
-    Test05();
+    Test04();
     return 0;
 }
