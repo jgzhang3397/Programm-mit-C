@@ -3,6 +3,8 @@
 #include<assert.h>
 
 /*
+Test01():
+
 strtok 函数
 char * strtok ( char * str, const char * delimiters );
 
@@ -15,30 +17,30 @@ char * strtok ( char * str, const char * delimiters );
 7. 如果字符串不存在更多标记，则返回null指针
 */
 
-// int main()
-// {
-//     const char arr[] = {"198.168.01.22"};
-//     char* p = {"."};
+void Test01()
+{
+    const char arr[] = {"198.168.01.22"};
+    char* p = {"."};
 
-//     //复制源数组
-//     char buf[100] = {0};
-//     strcpy(buf, arr);
+    //复制源数组
+    char buf[100] = {0};
+    strcpy(buf, arr);
 
-//     char* ret = NULL;
+    char* ret = NULL;
 
-//     for(ret = strtok(buf, p); ret != NULL; ret = strtok(NULL, p))
-//     {
-//         printf("%s\n", ret);
-//     }
-//     return 0;
-// }
+    for(ret = strtok(buf, p); ret != NULL; ret = strtok(NULL, p))
+    {
+        printf("%s\n", ret);
+    }
+}
 
 /*
-strerror 函数
-char * strerror ( int errnum );
+Test02():
+    strerror 函数
+    char * strerror ( int errnum );
 */
 #include<errno.h>
-int main()
+void Test02()
 {
     /*
     strerror(0) --> Undefined error: 0
@@ -53,7 +55,7 @@ int main()
     // printf("%s\n", str);
 
     //打开文件
-    FILE* pf = fopen("test.txt", "r");
+    FILE* pf = fopen("test.txt", "w");
     if(pf == NULL)
     {
         printf("%s\n", strerror(errno));//No such file or directory
@@ -62,5 +64,10 @@ int main()
     {
         printf("open file success\n");
     }
+}
+int main()
+{
+    //Test01();
+    Test02();
     return 0;
 }
