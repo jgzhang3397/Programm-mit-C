@@ -11,11 +11,25 @@ void review1()
     {
         printf("%s\n", strerror(errno));
     }
+
+    for(int i = 0; i<20; i++)
+    {
+        *(p+i) = i;
+        printf("%d ", *(p+i));
+    }
+    printf("\n");
+
     int *p2 = realloc(p, 80);
     if(p2 != NULL)
     {
         p = p2;
     }
+
+    for(int i = 0; i<20; i++)
+    {
+        printf("%d ", *(p+i));
+    }
+    printf("\n");
 }
 
 void error1()
@@ -66,7 +80,8 @@ void error4()
     for (int i = 0; i <10; i++)
     {
         *p++ = i;
-        printf("%d ", *p);
+        //*(p+i) = i;
+        printf("%d ", *(p+i));
     }
     //回收空间
     free(p);//部分释放了，因为p指向的地址发生了改变，指向了动态内存的末尾
@@ -144,15 +159,15 @@ void Test02()
 }
 int main()
 {
-    // review1();
+    //review1();
     // error1();
     // error2();
     // error3();
     // error4();
     // error5();
     //error6();
-    Test01();
-    //Test02();
+    //Test01();
+    Test02();
     return 0;
 }
 
