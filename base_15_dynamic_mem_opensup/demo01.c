@@ -3,6 +3,7 @@
 #include<string.h>
 #include<errno.h>
 /**
+ * Test01()&Test02():
  * 动态内存管理：
  *      动态内存函数：
  *          void* malloc(size_t size)
@@ -17,26 +18,25 @@ struct S
     int age;
 };
 
-// int main()
-// {
-//     // struct S s[20];//少了
-//     // struct S s[100];//多了
-//     // int arr[100];//多了，需要堆上申请动态内存
+void Test01()
+{
+    // struct S s[20];//少了
+    // struct S s[100];//多了
+    // int arr[100];//多了，需要堆上申请动态内存
 
-//     int n = 0;
-//     //gcc 支持c99标准，可以创建变长数组
-//     scanf("%d", &n);
-//     int arr[n];
-//     int i = 0;
-//     for ( i = 0; i < n; i++)
-//     {
-//         arr[i] = i;
-//         printf("%d ", arr[i]);
-//     }
-    
-// }
+    int n = 0;
+    //gcc 支持c99标准，可以创建变长数组
+    scanf("%d", &n);
+    int arr[n];
+    int i = 0;
+    for ( i = 0; i < n; i++)
+    {
+        arr[i] = i;
+        printf("%d ", arr[i]);
+    }
+}
 
-int main()
+void Test02()
 {
     //向内存申请10个int的空间
     int* p = (int*)malloc(10*sizeof(int));
@@ -73,5 +73,10 @@ int main()
         如果参数ptr是NULL指针，则函数什么都不做
     */
     p = NULL;//防止内存泄漏
+}
+int main()
+{
+    //Test01();
+    Test02();
     return 0;
 }
