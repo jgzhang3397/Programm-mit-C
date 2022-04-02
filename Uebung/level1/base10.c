@@ -52,7 +52,7 @@ void Test01()
 }
 
 /*
-Test02():
+Test02()& Test03():
     描述
 
 若一个数（首位不为零）从左向右读与从右向左读都一样，我们就将其称之为回文数。
@@ -163,9 +163,85 @@ void Test02()
     else
         printf("Impossible!\n");
 }
+
+//from other 
+#include<string.h>
+#include<stdbool.h>
+
+bool judge(char* p, int n)
+{
+    for(int i=0;i<n/2;i++)
+    {
+        if(p[i]!=p[n-1-i])
+            return false;
+    }
+    return true;
+}
+void STEP(char* M1, int len, int N)
+{
+    int m=0, n=0;
+    char M2[100];
+    char* p = M2;
+    for(int i = 0; i<len; i++)
+    {
+        int n1, n2;
+        if(M1[i]>='0' && M1[i]<='9')
+            n1 = M1[i] - 48;//'0'的ascii == 48 表示1-10进制
+        else
+            n1 = M1[i] - 'A' +10;//进制N>10时，使用大写'A'字母表示10，'B'表示11,...,'E'表示16
+
+        if(M1[len-i-1]>='0'&&M1[len-i-1]<='9')
+            n2=M1[len-i-1]-48;
+        else
+            n2=M1[len-i-1]-'A'+10;
+
+        n=n1+n2;//?
+
+        if(m!=0)
+            n++;
+        m = n/N;
+        n %= N;
+
+        if(n<10)
+            *p = (char)(n+48);
+        else
+            *p = 'A' + n - 10;
+
+        p++;
+
+        if(m==1)
+            *p = (char)(m+48), p++;
+        *p = '\0';
+
+        int len2 = strlen(M2);
+        for(int i=0;i<len2;i++)
+        {
+            M1[i]=M2[len2-1-i];
+        }
+        M1[len2]='\0';
+    }
+}
+void Test03()
+{
+    int N, i;
+    char M1[100];
+    scanf("%d%s", &N, M1);
+    int len = strlen(M1);
+    for(i=0; i<31; i++)
+    {
+        STEP(M1, len, N);
+        if(judge(M1, len))
+            break;
+    }
+    if(i<31)
+        printf("STEP=%d",i+1);
+    else
+        printf("Impossible!");
+}
 int main()
 {
     //Test01();
     Test02();
+    //Test03();
     return 0;
 }
