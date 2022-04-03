@@ -27,7 +27,7 @@ void test01()
 
 void test02()
 {
-    FILE* pfWrite = fopen("testo.txt", "w");
+    FILE* pfWrite = fopen("test.txt", "w");
     if(pfWrite == NULL)
     {
         printf("%s\n", strerror(errno));
@@ -48,7 +48,7 @@ void test02()
 
 void test03()
 {
-    FILE* pfRead = fopen("testo.txt", "r");
+    FILE* pfRead = fopen("test.txt", "r");
     if(pfRead == NULL)
     {
         printf("%s\n", strerror(errno));
