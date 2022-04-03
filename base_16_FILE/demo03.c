@@ -7,7 +7,7 @@ void test01()
 {
     char buf[1024] = {0};
 
-    FILE* pf = fopen("testo.txt", "r");
+    FILE* pf = fopen("test.txt", "r");
     if(pf == NULL)
     {
         return;
@@ -20,8 +20,8 @@ void test01()
         puts(buf);//直接换行
 
         fgets(buf, 1024, pf);
-        //printf("%s", buf);
-        puts(buf);
+        printf("%s", buf);
+        //puts(buf);
 
         fclose(pf);
         pf = NULL;
@@ -30,7 +30,7 @@ void test01()
 
 void test02()
 {
-    FILE* pf = fopen("testo.txt", "w");
+    FILE* pf = fopen("test.txt", "w");
     if(pf == NULL)
     {
         return;
@@ -71,7 +71,7 @@ struct S
 void test05()
 {
     struct S s = {100, 3.14f, "hello"};
-    FILE* pf = fopen("testo.txt", "w");
+    FILE* pf = fopen("test.txt", "w");
     if(pf == NULL)
     {
         printf("%s\n", strerror(errno));
@@ -91,7 +91,7 @@ void test05()
 void test06()
 {
     struct S s = {0};
-    FILE* pf = fopen("testo.txt", "r");
+    FILE* pf = fopen("test.txt", "r");
     if(pf == NULL)
     {
         printf("%s\n", strerror(errno));
