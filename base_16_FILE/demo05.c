@@ -14,7 +14,7 @@ void test01()
 {
     struct S s = {"leo", 18, 2.1};
 
-    FILE* pf = fopen("test2.txt","wb");//"wb" 新建写入一个二进制文件
+    FILE* pf = fopen("test.txt","wb");//"wb" 新建写入一个二进制文件
     if(pf == NULL)
     {
         return;
@@ -33,7 +33,7 @@ void test02()
 {
     struct S temp = {0};
 
-    FILE* pf = fopen("test2.txt","rb");//"rb" 只读一个二进制文件
+    FILE* pf = fopen("test.txt","rb");//"rb" 只读一个二进制文件
     if(pf == NULL)
     {
         return;
