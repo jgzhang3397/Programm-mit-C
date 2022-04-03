@@ -13,12 +13,27 @@ Test01()
         输出： 3
 */
 
+#include<stdlib.h>
+void Test01_1()
+{
+    //char str[100];
+    char* pc = (char*)malloc(32*sizeof(char));
+    if(pc == NULL)
+    {
+        perror("Memory allocation failed!\n");
+    }
+    fgets(pc, 32, stdin);
+    fputs(pc, stdout);
+    free(pc);
+    pc = NULL;
+}
 void Test01()
 {
     int a = 0;
     scanf("%d", &a);
     printf("%d\n", a);
 }
+
 
 /*
 Test02()
@@ -33,8 +48,8 @@ Test02()
 */
 void Test02()
 {
-    double a = 0.00;
-    scanf("%lf", &a);
+    float a = 0.00;
+    scanf("%f", &a);
     printf("%.3f\n", a);
 
 }
@@ -49,6 +64,11 @@ Test03()
         输入： a
         输出： a   
 */
+void Test03_1()
+{
+    int ch = fgetc(stdin);
+    fputc(ch, stdout);
+}
 void Test03()
 {
     char a = 0;
@@ -113,6 +133,27 @@ Test06()
         输入： 14.99
         输出： 15
 */
+void Test06_1()
+{
+    float a;
+    scanf("%f", &a);
+    if(a>0)
+    {
+        a += 0.5;
+        if(a - (int)(a)<1)
+            printf("%d\n", (int)a);
+        else
+            printf("%d\n", (int)(a+1));
+    }
+    else
+    {
+        a -= 0.5;
+        if(a - (int)(a)>-1)
+            printf("%d\n", (int)a);
+        else
+            printf("%d\n", (int)(a+1));
+    }
+}
 void Test06()
 {
     double d = 0.00;
@@ -223,15 +264,10 @@ void Test10()
 
 int main()
 {
-    //Test01();
+    //Test01_1();
     //Test02();
-    //Test03();
-    //Test04();
-    //Test05();
+    //Test03_1();
     //Test06();
-    //Test07();
-    //Test08();
-    //Test09();
-    Test10();
+    Test06_1();
     return 0;
 }
