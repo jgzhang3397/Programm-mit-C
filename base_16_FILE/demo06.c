@@ -4,7 +4,7 @@
 
 void test01()
 {
-    FILE* pf = fopen("testo.txt", "r");
+    FILE* pf = fopen("test.txt", "r");
     if(pf == NULL)
     {
         return;
@@ -27,18 +27,18 @@ void test01()
 
 void test02()
 {
-    FILE* pf = fopen("testo.txt", "r");
+    FILE* pf = fopen("test.txt", "r");
     if(pf == NULL)
     {
         return;
     }
 
     //1. 定位文件指针
-    fseek(pf, -2, SEEK_END);
+    fseek(pf, 2, SEEK_SET);
 
     //ftell 返回文件指针相对于起始位置的偏移量
     int pos = ftell(pf);
-    printf("%d\n", pos);
+    printf("%d\n", pos);//2
 
     fclose(pf);
     pf = NULL;
@@ -46,7 +46,7 @@ void test02()
 
 void test03()
 {
-    FILE* pf = fopen("testo.txt", "r");
+    FILE* pf = fopen("test.txt", "r");
     if(pf == NULL)
     {
         return;
@@ -71,7 +71,7 @@ void test03()
 void test04()
 {
     //feof();//EOF -- end of file - 文件结束标志
-    FILE* pf = fopen("texto.txt", "r");
+    FILE* pf = fopen("text.txt", "r");
     if(pf == NULL)
     {
         return;
