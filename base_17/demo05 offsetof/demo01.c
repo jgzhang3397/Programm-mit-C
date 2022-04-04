@@ -13,9 +13,9 @@ struct S
 
 void Test01()
 {
-    printf("%lu\n", offsetof(struct S, c1));
-    printf("%lu\n", offsetof(struct S, a));
-    printf("%lu\n", offsetof(struct S, c2));
+    printf("%lu\n", offsetof(struct S, c1));//0
+    printf("%lu\n", offsetof(struct S, a));//4
+    printf("%lu\n", offsetof(struct S, c2));//8
 }
 
 /*
