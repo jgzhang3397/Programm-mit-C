@@ -76,7 +76,7 @@ void Test03()
     int ret = SQUARE(5);
     printf("%d\n", ret);
     ret = SQUARE(5 + 1);// 宏 是完成替换的，不是传参的
-    printf("%d\n", ret);//11 
+    printf("%d\n", ret);//11 == 5+1*5+1
 
     ret = SQUARE_1(5 + 1);// 宏 是完成替换的，不是传参的
     printf("%d\n", ret);//36 
@@ -107,6 +107,6 @@ int main()
     //Test02();
     //Test03();
     //Print();
-    Test04();
+    //Test04();
     return 0;
 }
