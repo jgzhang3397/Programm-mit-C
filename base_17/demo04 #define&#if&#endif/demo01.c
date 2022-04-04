@@ -9,16 +9,6 @@ Test01:
             命令：
                 gcc -demo01.c -D sz=10
 
-Test02/03:
-        条件编译指令：
-            #if 常量表达式(1 = true, 0 = false)
-            #endif
-
-            #define _DEBUG_
-            #ifdef _DEBUG_
-                    ...
-            #endif
-
 Test04:
         多分支条件编译：
             #if 常量表达式
@@ -81,6 +71,17 @@ Test06:
 
 #define _DEBUG_
 
+/*
+Test02/03:
+        条件编译指令：
+            #if 常量表达式(1 = true, 0 = false)
+            #endif
+
+            #define _DEBUG_
+            #ifdef _DEBUG_
+                    ...
+            #endif
+*/
 void Test02()
 {
     int arr[10] = {0,1,2,3,4,5,6,7,8,9};
@@ -153,10 +154,10 @@ void Test06()
 int main()
 {
     //Test01();
-    //Test02();
+    Test02();
     //Test03();
     //Test04();
     //Test05();
-    Test06();
+    //Test06();
     return 0;
 }
