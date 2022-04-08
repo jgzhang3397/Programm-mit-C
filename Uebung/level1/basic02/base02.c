@@ -149,7 +149,7 @@ Test05()
 
     示例：
         输入： 45 80
-        输出： 125
+        输出： 25
 */
 void Test05()
 {
@@ -311,6 +311,15 @@ Test10()
     int putchar ( int character );
         Writes a character to the standard output (stdout).
     */
+void Test10_1()
+{
+    char a = 0;
+    while(scanf("%c", &a)!=EOF)
+    {
+        printf("%c\n", a+32);
+        getchar();
+    }
+}
 void Test10()
 {
     int ch = 0;
@@ -342,6 +351,7 @@ int main()
     //Test07();
     //Test08();
     //Test09();
-    Test10();
+    //Test10();
+    Test10_1();
     return 0;
 }
