@@ -59,7 +59,7 @@ void reverse_string_with_Rekursion(char arr[])
     arr[0] = arr[len-1];//最后一位放在0位
     arr[len-1]='\0';
 
-    if(my_strlen(arr+1)>=2)//数组长度小于2式不需要置换
+    if(my_strlen(arr+1)>=2)//数组长度小于2时不需要置换
     {
         reverse_string_with_Rekursion(arr+1);
     }
@@ -70,8 +70,8 @@ void reverse_string_with_Rekursion(char arr[])
 void Test02()
 {
     char arr[]="abcedfg";
-    reverse_string(arr);
-    printf("%s\n", arr);
+    // reverse_string(arr);
+    // printf("%s\n", arr);
 
     reverse_string_with_Rekursion(arr);
     printf("%s\n", arr);
@@ -136,8 +136,8 @@ void Test04()
 int main()
 {
     //Test01();
-    //Test02();
+    Test02();
     //Test03();
-    Test04();
+    //Test04();
     return 0;
 }
