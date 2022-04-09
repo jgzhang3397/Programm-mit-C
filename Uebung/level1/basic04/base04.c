@@ -33,10 +33,11 @@ void Test01()
 /*
 Test02():
     描述
-    小乐乐最近在课上学习了如何求两个正整数的最大公约数与最小公倍数，但是他竟然不会求两个正整数的最大公约数与最小公倍数之和，请你帮助他解决这个问题。
+    小乐乐最近在课上学习了如何求两个正整数的最大公约数与最小公倍数，
+    但是他竟然不会求两个正整数的最大公约数与最小公倍数之和，请你帮助他解决这个问题。
 
     输入描述：
-    每组输入包含两个正整数n和m。(1 ≤ n ≤ 109，1 ≤ m ≤ 109)
+    每组输入包含两个正整数n和m。(1 ≤ n ≤ 10^9，1 ≤ m ≤ 10^9)
 
     输出描述：
     对于每组输入，输出一个正整数，为n和m的最大公约数与最小公倍数之和。
@@ -118,6 +119,22 @@ Test03():
         输出：
             101
 */
+#include<string.h>
+void Test03_1()
+{
+    char arr[10] = {0};
+    scanf("%s", arr);
+    int len = strlen(arr);
+    int i;
+    for(i=0; i<len; i++)
+    {
+        if((int)arr[i]%2)
+            arr[i] = '1';
+        else
+            arr[i] = '0';
+    }
+    printf("%s\n", arr);
+}
 #include<math.h>
 void Test03()
 {
@@ -167,10 +184,7 @@ Test04():
 void Test04()
 {
     int x1, y1, x2, y2;
-    scanf("%d %d", &x1, &y1);
-    getchar();//读取回车'\n'
-    scanf("%d %d", &x2, &y2);
-    
+    scanf("%d %d %d %d", &x1, &y1, &x2, &y2);
     int sum = pow(((x1-x2)), 2) + pow((y1-y2), 2);
     printf("%d\n", sum);
 }
@@ -214,10 +228,8 @@ void Test05()
             }
             if(i == 10)
                 printf("Consonant\n");
-        }
-        
+        } 
     }
-    
 }
 
 /*
@@ -506,14 +518,15 @@ int main()
 {
     //Test01();
     //Test02();
+    //Test03_1();
     //Test03();
-    //Test04();
+    Test04();
     //Test05();
     //Test06();
     //Test07();
     //Test08();
     //Test09();
     //Test10();
-    Test_Scanf();
+    //Test_Scanf();
     return 0;
 }
