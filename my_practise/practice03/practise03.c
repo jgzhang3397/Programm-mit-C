@@ -52,11 +52,11 @@ void Test01()
     do
     {
         menu();
-        printf("Bitte waehlen Sie : ->");
+        printf("pls enter a number : ->");
         scanf("%d", &input);
         if(input>=1 && input < sz)
         {
-            printf("请输入两个操作数x 和 y:>");
+            printf("pls enter x & y:>");
             scanf("%d%d", &x, &y);
             // int result = (*pfArr[input])(x, y);
             int result = pfArr[input](x, y);
@@ -78,7 +78,7 @@ void Test01()
 void Calc(int (*pf)(int, int))
 {
     int x, y;
-    printf("请输入两个操作数x 和 y:>");
+    printf("pls enter x & y :>");
     scanf("%d%d", &x, &y);
     printf("%d\n", pf(x, y));
     //printf("%d\n", (*pf)(x, y));
@@ -91,7 +91,7 @@ void Test02()
     do
     {
         menu();
-        printf("Bitte waehlen Sie : ->");
+        printf("pls enter a number : ->");
         scanf("%d", &input);
         switch (input)
         {
