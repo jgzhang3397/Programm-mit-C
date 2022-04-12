@@ -17,12 +17,14 @@ again:
     "%[^\n]%*c" ==> 读到\n结束读取,存入input,再抛弃一个字符
     */
     scanf("%[^\n]", input);
+    //scanf("%s", input);//can not scanf space ' '
     if(strcmp(input,"I am a idiot")==0)
     {
         exit(0);
     }
     else
     {
+        getchar();
         goto again;
     }
 }
@@ -115,7 +117,7 @@ void Test06()
             printf("%d ",i);
             count++;
         }
-        if(i/10==9)
+        else if(i/10==9)
         {
             printf("%d ", i);
             count++;
@@ -131,35 +133,34 @@ Test07():
     只能被1和其本身整除
 */
 #include<math.h>
-void demo01()
+void demo01(int i, int j, int count)
 {
-    int i = 0;
-    int j = 0;
-    int count = 0;
+    int flag;
     for ( i = 101; i < 200; i++)
     {
+        flag = 0;
         for(j=2; j<i; j++)
         {
             if(i%j==0)
             {
+                flag = 1;
                 break;
             }
         }
-        if(j==i)
+        if(flag == 0)
         {
             printf("%d ", i);
             count++;
         }
     }
     printf("\nCount: %d\n", count);
-}
-void Test07()
+} 
+
+void demo02()
 {
     int i = 0;
     int j = 0;
     int count = 0;
-    //demo01
-    //demo01();
     for(i=101; i<200; i+=2)
     {
         int j = 0;
@@ -175,6 +176,13 @@ void Test07()
         }
     }
     printf("\nCount: %d\n", count);
+}
+void Test07()
+{
+    int i, j;
+    int count = 0;
+    demo01(i, j, count);
+    //demo02();
 }
 
 /*
@@ -233,13 +241,16 @@ void Test09()
 比较a, b, c 三个数的大小 并 从大到小排序
 
 */
+
 void Test10()
 {
     int a = 0;
     int b = 0;
     int c = 0;
+
     printf("Please enter the 3 number:>>>");
     scanf("%d%d%d", &a, &b, &c);
+
     if(a<b)
     {
         int temp = a;
@@ -269,9 +280,9 @@ int main()
     //Test04();
     //Test05();
     //Test06();
-    //Test07();
+    Test07();
     //Test08();
     //Test09();
-    Test10();
+    //Test10();
     return 0;
 }
