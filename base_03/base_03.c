@@ -120,7 +120,7 @@ Test03():
 void Test03()
 {
     int arr[] = {1,2,3,4,5,6,7,8,9,10};
-    int sz = sizeof(arr)/sizeof(arr[0])-1;//10
+    int sz = sizeof(arr)/sizeof(arr[0])-1;//9
 
     int k = 0;
     printf("Please enter the value:>>>");
@@ -131,7 +131,7 @@ void Test03()
     {
         if(k == arr[i])
         {
-            printf("found it. put it on arr[%d], the %d.th number\n", i, i+1);
+            printf("found it. put it on arr[%d], the %d.th number\n", i, arr[i]);
             break;
         }
     }
@@ -148,9 +148,9 @@ Test04(): binary search(二分法查找)
 void Test04()
 {
     int arr[]={1,2,3,4,5,6,7,8,9,10};
-    int sz = sizeof(arr)/sizeof(arr[0]);//sz = 11
+    int sz = sizeof(arr)/sizeof(arr[0]);//sz = 10
     int left = 0;
-    int right = sz -1; //10
+    int right = sz -1; //9
     int k = 0;
     printf("Please enter the value:>>>");
     scanf("%d",&k);
@@ -168,7 +168,7 @@ void Test04()
         }
         else
         {
-            printf("found it. put it on arr[%d], the %d.th number\n", mid, mid+1);
+            printf("found it. put it on arr[%d], the %d.th number\n", mid, arr[mid]);
             break;
         }
     }
@@ -177,7 +177,7 @@ void Test04()
 }
 
 /*
-Test05(): calculate 3! + 2! +1!
+Test05(): calculate 4! + 3! + 2! +1!
 */
 void Test05()
 {
@@ -185,7 +185,7 @@ void Test05()
     int erg = 1;
     int n = 0;
     int sum = 0;
-    for (n=1; n<=3; n++)
+    for (n=1; n<=4; n++)
     {
        erg = 1;
        for(i=1; i<=n; i++)
@@ -205,7 +205,7 @@ void Test06()
     int n = 0;
     int erg = 1;
     int sum = 0;
-    for(n=1; n<=3; n++)
+    for(n=1; n<=4; n++)
     {
         erg = erg * n;
         sum = sum + erg;
@@ -237,7 +237,7 @@ Only outputs 0 to 9 Integer
 
 void Test08()
 {
-     int ch = 0;
+    int ch = 0;
     while ((ch=getchar()) != EOF)
     {
         if(ch<'0' || ch>'9')
@@ -273,6 +273,7 @@ void Test09()
     {
 
         printf("thank you!\n");
+        printf("%s\n", password);
     }
     else
     {
