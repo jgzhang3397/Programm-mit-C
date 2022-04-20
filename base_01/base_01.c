@@ -357,7 +357,7 @@ void Test18()
 
 int main()
 {
-    //Test01();
+    Test01();
     //Test02();
     //Test03();
     //Test04();
@@ -374,6 +374,6 @@ int main()
     //Test15();
     //Test16();
     //Test17();
-    Test18();
+    //Test18();
     return 0;
 }
