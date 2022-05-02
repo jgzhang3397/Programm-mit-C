@@ -21,7 +21,7 @@ int main()
             max = len;
             copy(longest, line);
         }
-        else
+        else if(len == 1)//input == '\n' while end
             break;
     }
 
