@@ -2,7 +2,7 @@
 #define MAXLINE 1000
 
 /*
-把所有长度大于10个字符的输入行打印出来
+把每个输入行中的尾部空格及制表符都删除掉，并删除空格行
 */
 int getLine(char line[], int maxline);
 void copy(char to[], char from[]);
@@ -13,17 +13,10 @@ int main()
     char line[MAXLINE]; //当前输入的行
     char output[MAXLINE]; //输出行
 
-    while ((len = getLine(line, MAXLINE)) > 1)
+    while ((len = getLine(line, MAXLINE)) >= 0)
     {
-        if(len > 11)
-        {
-            printf("input len :%d\n", len);
-            copy(output, line);
-        }
-        else if(len <= 10)
-            printf("inputs length : %d<= 10, enter input again!\n", len);
-        if(len == 1)
-            break;
+        printf("input len :%d\n", len);
+        copy(output, line);
     }
     return 0;
 }
@@ -36,14 +29,12 @@ int getLine(char s[], int lim)
     for(i=0; i<lim-1 && (c = getchar())!= EOF; ++i)
     {
         s[i] = c;
-        if(c == '\n')
+        if(c == '\n' || c == '\t')//删除尾部空格或者制表符
         {
-            i++;
+            s[i] = '\0';
             break;
         }
     }
-
-    s[i] = '\0';
     return i;
         
 }
@@ -53,9 +44,12 @@ void copy(char to[], char from[])
 {
     int i;
     i=0;
+    if((to[0] = from[0]) == '\0')
+        printf("nothing to output\n");
     while ((to[i] = from[i]) != '\0')
     {
         printf("%c", to[i]);
         i++;
     }
+    printf("\n");
 }
